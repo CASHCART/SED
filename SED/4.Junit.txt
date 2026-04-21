@@ -37,13 +37,15 @@ JUnit Workflow:
 **PROGRAM (Using assertEquals)**
 
 ```java id="jn1eq"
-import static org.junit.Assert.*;
-import org.junit.Test;
+package pack2;
 
-public class JunitExample {
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
+
+public class Example2 {
 
     @Test
-    public void testString() {
+    void testString() {
         String str = "check the string";
         assertEquals("check the string", str);
     }
