@@ -1,0 +1,10 @@
+cd myapp
+nano pom.xml
+
+mvn compile
+mvn test
+mvn package
+mvn install
+
+cd ~/.m2/repository
+ls

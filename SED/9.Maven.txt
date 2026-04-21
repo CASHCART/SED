@@ -1,0 +1,170 @@
+**AIM**
+To study Maven POM, Build Lifecycle, Repositories, Dependencies, and Plugins.
+
+---
+
+**THEORY**
+Maven POM (Project Object Model) is an XML file (`pom.xml`) that contains project configuration details such as dependencies, plugins, and build settings.
+
+Key Terms:
+
+* **GroupId** → identifies organization (e.g., com.example)
+* **ArtifactId** → project name (e.g., myapp)
+* **Version** → project version (e.g., 1.0-SNAPSHOT)
+* **Snapshot** → development version (not final release)
+
+Maven Build Lifecycle consists of three main lifecycles:
+
+* **Clean** → removes previous build files
+* **Default (Build)** → compile, test, package, install
+* **Site** → generates project reports
+
+Important Phases:
+
+* Validate → checks project
+* Compile → compiles code
+* Test → runs test cases
+* Package → creates JAR
+* Install → stores in local repository
+
+Repositories:
+
+* **Local Repository (.m2)** → stores downloaded dependencies (`~/.m2/repository`)
+* **Global Repository** → online repository (https://repo.maven.apache.org)
+
+Maven Dependencies are external libraries added in `pom.xml`.
+Maven Plugins are used to perform tasks like compiling and packaging.
+
+---
+
+**IMPLEMENTATION COMMANDS (SEQUENTIAL)**
+
+**Step 1: Open Project**
+
+```bash id="p1"
+cd myapp
+```
+
+---
+
+**Step 2: Open POM File**
+
+```bash id="p2"
+nano pom.xml
+```
+
+---
+
+**Step 3: Basic POM Structure**
+
+```xml id="p3"
+<project xmlns="http://maven.apache.org/POM/4.0.0">
+ <modelVersion>4.0.0</modelVersion>
+ <groupId>com.example</groupId>
+ <artifactId>myapp</artifactId>
+ <version>1.0-SNAPSHOT</version>
+ <packaging>jar</packaging>
+ <dependencies>
+ </dependencies>
+</project>
+```
+
+---
+
+**Step 4: Add Dependency (JUnit)**
+
+```xml id="p4"
+<dependencies>
+ <dependency>
+  <groupId>junit</groupId>
+  <artifactId>junit</artifactId>
+  <version>4.13.2</version>
+  <scope>test</scope>
+ </dependency>
+</dependencies>
+```
+
+---
+
+**Step 5: Compile Project**
+
+```bash id="p5"
+mvn compile
+```
+
+---
+
+**Step 6: Run Tests**
+
+```bash id="p6"
+mvn test
+```
+
+---
+
+**Step 7: Package Project**
+
+```bash id="p7"
+mvn package
+```
+
+---
+
+**Step 8: Install Project**
+
+```bash id="p8"
+mvn install
+```
+
+---
+
+**Step 9: Clean Build Files**
+
+```bash id="p9"
+mvn clean
+```
+
+---
+
+**Step 10: Check Local Repository**
+
+```bash id="p10"
+cd ~/.m2/repository
+ls
+```
+
+---
+
+**Step 11: Maven Lifecycle Commands**
+
+```bash id="p11"
+mvn validate
+mvn compile
+mvn test
+mvn package
+mvn install
+```
+
+---
+
+**Step 12: Simple Complete Flow**
+
+```bash id="p12"
+mvn archetype:generate
+cd myapp
+nano pom.xml
+mvn compile
+mvn test
+mvn package
+mvn install
+```
+
+---
+
+**OUTPUT**
+Project compiled, dependencies downloaded, and JAR file created successfully.
+
+---
+
+**CONCLUSION**
+Thus Maven POM and lifecycle are used to manage project build and dependencies efficiently.

@@ -1,0 +1,147 @@
+**AIM**
+To schedule build jobs in Jenkins using Poll SCM and Build Periodically.
+
+---
+
+**THEORY**
+Jenkins supports scheduling of jobs to automate build execution.
+Two main scheduling methods are used:
+
+* **Poll SCM** → triggers build when changes are detected in source code repository
+* **Build Periodically** → triggers build at fixed time intervals
+
+Jenkins also allows chaining multiple jobs using post-build actions to create a workflow (Build → Deploy → Test → Release).
+This improves automation and continuous integration.
+
+---
+
+**IMPLEMENTATION STEPS (SEQUENTIAL)**
+
+**Step 1: Create Build Job**
+
+* New Item → Freestyle Project
+* Name: Build
+* Build Step → Execute Shell:
+
+```bash id="js1"
+echo "This is build job"
+```
+
+* Apply → Save
+
+---
+
+**Step 2: Create Deploy Job**
+
+* New Item → Freestyle Project
+* Name: Deploy
+* Build Step → Execute Shell:
+
+```bash id="js2"
+echo "This is deploy job"
+```
+
+* Apply → Save
+
+---
+
+**Step 3: Create Test Job**
+
+* New Item → Freestyle Project
+* Name: Test
+* Apply → Save
+
+---
+
+**Step 4: Create Release Job**
+
+* New Item → Freestyle Project
+* Name: Release
+* Apply → Save
+
+---
+
+**Step 5: Link Jobs (Build → Deploy)**
+
+* Open Build Job → Configure
+* Post-build Actions → Build Other Projects
+* Enter:
+
+```text id="js3"
+Deploy
+```
+
+* Select: Trigger only if build is stable
+* Apply → Save
+
+---
+
+**Step 6: Link Jobs (Deploy → Test)**
+
+* Open Deploy Job → Configure
+* Post-build Actions → Build Other Projects
+* Enter:
+
+```text id="js4"
+Test
+```
+
+* Select: Trigger only if build is stable
+* Apply → Save
+
+---
+
+**Step 7: Link Jobs (Test → Release)**
+
+* Open Release Job → Configure
+* Build Trigger → Build after other projects are built
+* Projects to watch:
+
+```text id="js5"
+Test
+```
+
+* Select: Trigger only if build is stable
+* Apply → Save
+
+---
+
+**POLL SCM (Build on Code Change)**
+
+Go to:
+
+* Job → Configure → Build Triggers → Poll SCM
+
+Examples:
+
+```text id="js6"
+H/5 * * * *   (every 5 minutes)
+H/15 * * * *  (every 15 minutes)
+H * * * *     (every hour)
+```
+
+---
+
+**BUILD PERIODICALLY (Fixed Schedule)**
+
+Go to:
+
+* Job → Configure → Build Triggers → Build periodically
+
+Examples:
+
+```text id="js7"
+H/5 * * * *   (every 5 minutes)
+0 10 * * *    (every day at 10 AM)
+0 0 * * 0     (every Sunday midnight)
+```
+
+---
+
+**OUTPUT**
+Jobs executed automatically based on schedule and job chaining.
+
+---
+
+**CONCLUSION**
+Thus Jenkins scheduling is implemented using Poll SCM and Build Periodically to automate build execution.

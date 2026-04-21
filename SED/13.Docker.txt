@@ -1,0 +1,111 @@
+**AIM**
+To study Docker CLI, Docker Compose, Docker Hub, Docker Swarm, and related commands.
+
+---
+
+**THEORY**
+Docker provides a command-line interface (CLI) to manage containers and images.
+Docker Compose is used to run multi-container applications.
+Docker Hub is a public registry to store and share images.
+Docker Trusted Registry (DTR) is used in enterprises for secure image storage.
+Docker Swarm is used for clustering and managing multiple containers.
+Docker also provides commands like attach and exec to interact with running containers.
+
+---
+
+**IMPLEMENTATION COMMANDS (SEQUENTIAL)**
+
+**Step 1: Docker CLI Commands**
+
+```bash id="d1"
+docker ps
+docker images
+docker pull image_name
+docker run image_name
+docker stop container_id
+docker rm container_id
+docker exec -it container_id bash
+docker logs container_id
+```
+
+---
+
+**Step 2: Install Docker Compose**
+
+```bash id="d2"
+sudo apt install docker-compose -y
+```
+
+---
+
+**Step 3: Create Compose File**
+
+```bash id="d3"
+nano docker-compose.yml
+```
+
+```yaml id="d4"
+version: '3'
+services:
+  web:
+    image: nginx
+    ports:
+      - "8081:80"
+  redis:
+    image: redis
+```
+
+---
+
+**Step 4: Run Services**
+
+```bash id="d5"
+docker-compose up -d
+```
+
+---
+
+**Step 5: Stop Services**
+
+```bash id="d6"
+docker-compose down
+```
+
+---
+
+**Step 6: Docker Hub**
+
+```bash id="d7"
+docker login
+docker tag myimage username/myimage:v1
+docker push username/myimage:v1
+```
+
+---
+
+**Step 7: Docker Swarm**
+
+```bash id="d8"
+docker swarm init
+docker service create --name webserver -p 8082:80 nginx
+docker service ls
+```
+
+---
+
+**Step 8: Docker Attach / Exec**
+
+```bash id="d9"
+docker attach container_id
+docker exec -it container_id bash
+```
+
+---
+
+**OUTPUT**
+Containers and services managed successfully using Docker commands.
+
+---
+
+**CONCLUSION**
+Thus Docker CLI, Compose, Hub, and Swarm are used for container management and deployment.

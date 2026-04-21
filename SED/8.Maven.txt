@@ -1,0 +1,147 @@
+**AIM**
+To install Maven and build a Java project using Maven commands.
+
+---
+
+**THEORY**
+Maven is a build automation and dependency management tool used for Java projects.
+It simplifies project build process by handling compilation, testing, packaging, and deployment.
+Maven uses a configuration file called **POM (Project Object Model)** defined in `pom.xml`.
+
+Key Concepts:
+
+* **POM (pom.xml)** → contains project configuration
+* **GroupId** → organization name
+* **ArtifactId** → project name
+* **Version** → project version (e.g., 1.0-SNAPSHOT)
+* **Dependencies** → external libraries required
+* **Plugins** → perform tasks like compile and test
+
+Maven Build Lifecycle:
+
+* **Clean** → removes previous build files
+* **Compile** → compiles source code
+* **Test** → runs test cases
+* **Package** → creates JAR file
+* **Install** → stores project in local repository
+
+---
+
+**IMPLEMENTATION COMMANDS (SEQUENTIAL)**
+
+**Step 1: Update System**
+
+```bash id="m1"
+sudo apt update
+```
+
+---
+
+**Step 2: Install Java**
+
+```bash id="m2"
+sudo apt install openjdk-17-jdk -y
+java -version
+```
+
+---
+
+**Step 3: Install Maven**
+
+```bash id="m3"
+sudo apt install maven -y
+```
+
+---
+
+**Step 4: Verify Maven**
+
+```bash id="m4"
+mvn -version
+```
+
+---
+
+**Step 5: Create Maven Project**
+
+```bash id="m5"
+mvn archetype:generate
+```
+
+Enter:
+
+* GroupId: com.example
+* ArtifactId: myapp
+* Version: 1.0-SNAPSHOT
+
+---
+
+**Step 6: Navigate to Project**
+
+```bash id="m6"
+cd myapp
+```
+
+---
+
+**Step 7: Check Project Structure**
+
+```bash id="m7"
+ls
+```
+
+---
+
+**Step 8: Compile Project**
+
+```bash id="m8"
+mvn compile
+```
+
+---
+
+**Step 9: Run Tests**
+
+```bash id="m9"
+mvn test
+```
+
+---
+
+**Step 10: Package Project**
+
+```bash id="m10"
+mvn package
+```
+
+Output:
+
+```text id="m11"
+target/myapp-1.0-SNAPSHOT.jar
+```
+
+---
+
+**Step 11: Clean Project**
+
+```bash id="m12"
+mvn clean
+```
+
+---
+
+**Step 12: Install to Local Repository**
+
+```bash id="m13"
+mvn install
+```
+
+---
+
+**OUTPUT**
+Project compiled, tested, and JAR file generated successfully.
+
+---
+
+**CONCLUSION**
+Thus Maven is used to automate build process and manage project dependencies.

@@ -1,0 +1,28 @@
+sudo apt update
+sudo apt install git -y
+
+git --version
+
+git config --global user.name "your_name"
+git config --global user.email "your_email"
+git config --list
+
+mkdir my_project
+cd my_project
+git init
+
+git status
+
+git add .
+git commit -m "initial commit"
+
+git remote add origin https://github.com/username/repository.git
+git remote -v
+
+git branch -M main
+git push -u origin main
+
+git pull origin main
+
+git log
+git log --oneline

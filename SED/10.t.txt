@@ -1,0 +1,18 @@
+sudo apt update
+sudo apt install ansible -y
+ansible --version
+
+mkdir ~/ansible
+cd ~/ansible
+
+gedit hosts.ini
+
+ansible -i hosts.ini local -m ping
+
+gedit local_playbook.yml
+
+ansible-playbook -i hosts.ini local_playbook.yml
+
+sudo visudo
+
+systemctl status nginx

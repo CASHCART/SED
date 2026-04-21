@@ -1,0 +1,137 @@
+**AIM**
+To install and configure Jenkins and perform Continuous Integration.
+
+---
+
+**THEORY**
+Jenkins is an open-source automation tool used for Continuous Integration (CI) and Continuous Deployment (CD).
+It helps automate building, testing, and deployment of software projects.
+Jenkins runs jobs automatically when changes are detected in source code repositories.
+It supports plugins for integration with tools like Git, Maven, and Docker.
+Jenkins improves software quality by detecting errors early and automating repetitive tasks.
+
+---
+
+**IMPLEMENTATION COMMANDS (SEQUENTIAL)**
+
+**Step 1: Update System**
+
+```bash id="j1"
+sudo apt update
+sudo apt upgrade -y
+```
+
+**Step 2: Install Java**
+
+```bash id="j2"
+sudo apt install openjdk-17-jdk -y
+java -version
+```
+
+**Step 3: Add Jenkins Repository**
+
+```bash id="j3"
+curl -fsSL https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key | sudo tee /usr/share/keyrings/jenkins-keyring.asc > /dev/null
+
+echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] https://pkg.jenkins.io/debian-stable binary/ | sudo tee /etc/apt/sources.list.d/jenkins.list > /dev/null
+```
+
+**Step 4: Install Jenkins**
+
+```bash id="j4"
+sudo apt update
+sudo apt install jenkins -y
+```
+
+**Step 5: Start Jenkins Service**
+
+```bash id="j5"
+sudo systemctl start jenkins
+sudo systemctl enable jenkins
+sudo systemctl status jenkins
+```
+
+**Step 6: Install Git**
+
+```bash id="j6"
+sudo apt install git -y
+git --version
+```
+
+**Step 7: Allow Port 8080**
+
+```bash id="j7"
+sudo ufw allow 8080
+sudo ufw reload
+```
+
+**Step 8: Get System IP**
+
+```bash id="j8"
+ip a
+```
+
+---
+
+**BROWSER STEPS (AFTER COMMANDS)**
+
+Open browser:
+
+```
+http://<your-ip>:8080
+```
+
+Get admin password:
+
+```bash id="j9"
+sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+```
+
+---
+
+**CREATE CI PROJECT**
+
+1. Click **New Item**
+2. Enter name: `MyFirstCI`
+3. Select **Freestyle Project → OK**
+
+---
+
+**CONFIGURATION STEPS**
+
+**Source Code Management (Git URL)**
+
+```
+https://github.com/octocat/Hello-World.git
+```
+
+**Build Trigger**
+
+```
+Poll SCM
+* * * * *
+```
+
+**Build Step (Execute Shell)**
+
+```bash id="j10"
+echo "Hello from Jenkins Build"
+```
+
+---
+
+**RUN BUILD**
+
+1. Click **Build Now**
+2. Open **Console Output**
+
+Expected Output:
+
+```text id="j11"
+Hello from Jenkins Build
+```
+
+---
+
+**CONCLUSION**
+Thus Jenkins is successfully installed and used for Continuous Integration by automating build process.

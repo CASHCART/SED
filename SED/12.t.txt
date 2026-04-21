@@ -1,0 +1,39 @@
+sudo apt update
+sudo apt install docker.io -y
+
+sudo systemctl start docker
+sudo systemctl enable docker
+
+docker --version
+sudo systemctl status docker
+
+sudo docker run hello-world
+
+sudo docker pull nginx
+sudo docker images
+sudo docker rmi nginx
+
+docker run -d -p 8080:80 --name mynginx nginx
+
+sudo docker ps
+sudo docker stop <container_id>
+sudo docker rm <container_id>
+
+sudo docker exec -it <container_id> /bin/bash
+
+sudo docker pull jenkins/jenkins:lts
+sudo docker images
+
+docker run -d --name jenkins -p 9090:8080 -p 50001:50000 jenkins/jenkins:lts
+
+sudo docker ps
+
+sudo docker exec jenkins cat /var/jenkins_home/secrets/initialAdminPassword
+
+sudo docker stop jenkins
+sudo docker rm jenkins
+
+nano Dockerfile
+
+docker build -t myimage .
+docker run myimage

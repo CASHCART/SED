@@ -1,0 +1,26 @@
+cd ~/ansible
+
+gedit 01_variables.yml
+ansible-playbook -i hosts.ini 01_variables.yml
+
+gedit 02_condition.yml
+ansible-playbook -i hosts.ini 02_condition.yml
+
+gedit 03_loops.yml
+ansible-playbook -i hosts.ini 03_loops.yml
+
+gedit 04_handlers.yml
+ansible-playbook -i hosts.ini 04_handlers.yml
+
+gedit 05_blocks.yml
+ansible-playbook -i hosts.ini 05_blocks.yml
+
+mkdir templates
+gedit templates/index.html.j2
+gedit 06_template.yml
+ansible-playbook -i hosts.ini 06_template.yml
+
+ansible-galaxy init nginx_role
+gedit nginx_role/tasks/main.yml
+gedit 07_role.yml
+ansible-playbook -i hosts.ini 07_role.yml

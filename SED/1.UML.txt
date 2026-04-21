@@ -1,0 +1,86 @@
+**AIM**
+To study UML diagrams and model a system using StarUML.
+
+---
+
+**THEORY**
+UML (Unified Modeling Language) is a standard modeling language used to visualize, design, and document software systems.
+It provides a set of diagrams to represent system structure and behavior.
+
+UML Components:
+
+* **Things** → structural, behavioral, grouping, annotational
+* **Relationships** → association, dependency, generalization, realization
+* **Diagrams** → different views of system
+
+---
+
+**UML DIAGRAMS (DESCRIPTION)**
+
+**1. Use Case Diagram**
+Represents interaction between users (actors) and system.
+Shows functionalities like login, withdraw, check balance.
+Actors are shown as stick figures and use cases as ovals.
+
+---
+
+**2. Class Diagram**
+Represents static structure of system.
+Includes classes, attributes, methods, and relationships.
+Example: ATM, User, Account, Bank, Transaction.
+
+---
+
+**3. Sequence Diagram**
+Shows interaction between objects in time sequence.
+Represents message flow step-by-step.
+Example: Insert card → Enter PIN → Verify → Withdraw → Dispense cash.
+
+---
+
+**4. Activity Diagram**
+Represents workflow of a process.
+Uses start, decision, action, and end symbols.
+Example: Start → Enter PIN → Validate → Perform transaction → End.
+
+---
+
+**5. State Diagram**
+Represents different states of a system.
+Shows transitions between states.
+Example: Idle → Card Inserted → Processing → Cash Dispensed → End.
+
+---
+
+**6. Component Diagram**
+Represents software components and their relationships.
+Shows modules like ATM system, database, user interface.
+
+---
+
+**7. Deployment Diagram**
+Represents physical deployment of system.
+Shows hardware nodes and connections.
+Example: ATM machine connected to bank server.
+
+---
+
+**STARUML STEPS (IMPLEMENTATION)**
+
+1. Open StarUML
+2. Create new project
+3. Select required diagram (Use Case / Class / etc.)
+4. Drag and drop elements (actor, class, etc.)
+5. Connect using relationships
+6. Label components clearly
+7. Save diagram
+
+---
+
+**OUTPUT**
+UML diagrams created successfully representing system design.
+
+---
+
+**CONCLUSION**
+Thus UML diagrams are used to model and visualize software systems effectively.

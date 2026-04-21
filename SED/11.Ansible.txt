@@ -1,0 +1,281 @@
+**AIM**
+To implement Ansible playbooks using variables, conditionals, loops, handlers, blocks, templates, and roles.
+
+---
+
+**THEORY**
+Ansible playbooks are written in YAML to automate tasks.
+Playbooks support advanced features like variables, conditionals, loops, handlers, blocks, templates, and roles.
+
+Key Concepts:
+
+* **Variables** → store reusable values
+* **Conditionals (when)** → execute tasks based on conditions
+* **Loops** → repeat tasks multiple times
+* **Handlers** → run only when notified
+* **Blocks** → handle errors using rescue
+* **Templates** → dynamic file generation using variables
+* **Roles** → organize playbooks into reusable structure
+
+---
+
+**IMPLEMENTATION COMMANDS (SEQUENTIAL)**
+
+```bash id="a0"
+cd ~/ansible
+```
+
+---
+
+**1. VARIABLES PLAYBOOK**
+
+```bash id="a1"
+gedit 01_variables.yml
+```
+
+```yaml id="a2"
+---
+- name: Variables Example
+  hosts: local
+  become: yes
+  vars:
+    package_name: nginx
+
+  tasks:
+    - name: Install package using variable
+      apt:
+        name: "{{ package_name }}"
+        state: present
+```
+
+```bash id="a3"
+ansible-playbook -i hosts.ini 01_variables.yml
+```
+
+---
+
+**2. CONDITIONALS PLAYBOOK**
+
+```bash id="a4"
+gedit 02_condition.yml
+```
+
+```yaml id="a5"
+---
+- name: Condition Example
+  hosts: local
+  become: yes
+  vars:
+    install_package: true
+
+  tasks:
+    - name: Install nginx only if condition is true
+      apt:
+        name: nginx
+        state: present
+      when: install_package
+```
+
+```bash id="a6"
+ansible-playbook -i hosts.ini 02_condition.yml
+```
+
+---
+
+**3. LOOPS PLAYBOOK**
+
+```bash id="a7"
+gedit 03_loops.yml
+```
+
+```yaml id="a8"
+---
+- name: Loop Example
+  hosts: local
+  become: yes
+
+  tasks:
+    - name: Install multiple packages
+      apt:
+        name: "{{ item }}"
+        state: present
+      loop:
+        - git
+        - curl
+        - wget
+```
+
+```bash id="a9"
+ansible-playbook -i hosts.ini 03_loops.yml
+```
+
+---
+
+**4. HANDLERS PLAYBOOK**
+
+```bash id="a10"
+gedit 04_handlers.yml
+```
+
+```yaml id="a11"
+---
+- name: Handler Example
+  hosts: local
+  become: yes
+
+  tasks:
+    - name: Install nginx
+      apt:
+        name: nginx
+        state: present
+      notify: Restart nginx
+
+  handlers:
+    - name: Restart nginx
+      service:
+        name: nginx
+        state: restarted
+```
+
+```bash id="a12"
+ansible-playbook -i hosts.ini 04_handlers.yml
+```
+
+---
+
+**5. BLOCKS PLAYBOOK**
+
+```bash id="a13"
+gedit 05_blocks.yml
+```
+
+```yaml id="a14"
+---
+- name: Block Example
+  hosts: local
+  become: yes
+
+  tasks:
+    - block:
+        - name: Install nginx
+          apt:
+            name: nginx
+            state: present
+
+        - name: Start nginx
+          service:
+            name: nginx
+            state: started
+
+      rescue:
+        - name: Print error message
+          debug:
+            msg: "Something failed!"
+```
+
+```bash id="a15"
+ansible-playbook -i hosts.ini 05_blocks.yml
+```
+
+---
+
+**6. TEMPLATE PLAYBOOK**
+
+```bash id="a16"
+mkdir templates
+gedit templates/index.html.j2
+```
+
+```html id="a17"
+<h1>Welcome to {{ server_name }}</h1>
+```
+
+```bash id="a18"
+gedit 06_template.yml
+```
+
+```yaml id="a19"
+---
+- name: Template Example
+  hosts: local
+  become: yes
+  vars:
+    server_name: My Ansible Server
+
+  tasks:
+    - name: Deploy template
+      template:
+        src: templates/index.html.j2
+        dest: /var/www/html/index.html
+```
+
+```bash id="a20"
+ansible-playbook -i hosts.ini 06_template.yml
+```
+
+---
+
+**7. ROLES**
+
+```bash id="a21"
+ansible-galaxy init nginx_role
+```
+
+```bash id="a22"
+gedit nginx_role/tasks/main.yml
+```
+
+```yaml id="a23"
+---
+- name: Install nginx
+  apt:
+    name: nginx
+    state: present
+```
+
+```bash id="a24"
+gedit 07_role.yml
+```
+
+```yaml id="a25"
+---
+- name: Use nginx role
+  hosts: local
+  become: yes
+
+  roles:
+    - nginx_role
+```
+
+```bash id="a26"
+ansible-playbook -i hosts.ini 07_role.yml
+```
+
+---
+
+**PROJECT STRUCTURE**
+
+```text id="a27"
+ansible/
+├── hosts.ini
+├── 01_variables.yml
+├── 02_condition.yml
+├── 03_loops.yml
+├── 04_handlers.yml
+├── 05_blocks.yml
+├── 06_template.yml
+├── 07_role.yml
+├── templates/
+│   └── index.html.j2
+└── nginx_role/
+```
+
+---
+
+**OUTPUT**
+All playbooks executed successfully.
+
+---
+
+**CONCLUSION**
+Thus Ansible playbooks using variables, loops, handlers, templates, and roles are implemented successfully.

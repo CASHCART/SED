@@ -1,0 +1,81 @@
+**AIM**
+To study bug reporting using Bugzilla.
+
+---
+
+**THEORY**
+A bug is an error or defect in a software system that causes incorrect or unexpected results.
+Bugzilla is an open-source bug tracking tool used to report, track, and manage bugs.
+It helps in identifying issues, assigning them to developers, and monitoring their status.
+
+Bug Lifecycle:
+New → Assigned → Open → Fixed → Closed
+
+Bug Fields:
+
+* Product
+* Component
+* Summary
+* Description
+* Severity
+* Priority
+
+---
+
+**BUG REPORTS (FROM GIVEN FILE)**
+
+```text id="b1"
+Bug ID: BUG_01  
+Type: Functional Bug  
+Description: ATM fails to eject card after transaction  
+Severity: High
+```
+
+```text id="b2"
+Bug ID: BUG_02  
+Type: Synchronization Bug  
+Description: Balance not updated immediately after transaction  
+Severity: Medium
+```
+
+```text id="b3"
+Bug ID: BUG_03  
+Type: UI Bug  
+Description: Incorrect language or display on screen  
+Severity: Low
+```
+
+```text id="b4"
+Bug ID: BUG_04  
+Type: Performance Bug  
+Description: Screen freezes during transaction  
+Severity: High
+```
+
+```text id="b5"
+Bug ID: BUG_05  
+Type: Critical Bug  
+Description: Cash dispense mismatch (wrong amount)  
+Severity: Critical
+```
+
+---
+
+**STEPS TO REPORT BUG IN BUGZILLA**
+
+1. Login to Bugzilla
+2. Click on **New Bug**
+3. Select Product and Component
+4. Enter Summary and Description
+5. Set Severity and Priority
+6. Submit bug report
+
+---
+
+**OUTPUT**
+Bugs are reported successfully using Bugzilla.
+
+---
+
+**CONCLUSION**
+Thus Bugzilla is used to track and manage software bugs efficiently.

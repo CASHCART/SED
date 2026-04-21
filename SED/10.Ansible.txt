@@ -1,0 +1,139 @@
+**AIM**
+To configure Ansible server and execute playbooks using inventory and YAML scripts.
+
+---
+
+**THEORY**
+Ansible is an automation tool used for configuration management and infrastructure management.
+It uses SSH for communication and does not require agents on target machines.
+Ansible uses **YAML scripts (playbooks)** to automate tasks.
+
+Key Concepts:
+
+* **Inventory File** → defines target hosts
+* **Playbook** → YAML file containing tasks
+* **Host Variables / Group Variables** → store configuration data
+* **Ad-hoc Commands** → quick one-line operations
+
+---
+
+**IMPLEMENTATION COMMANDS (SEQUENTIAL)**
+
+**Step 1: Install Ansible**
+
+```bash id="a1"
+sudo apt update
+sudo apt install ansible -y
+ansible --version
+```
+
+---
+
+**Step 2: Create Project Directory**
+
+```bash id="a2"
+mkdir ~/ansible
+cd ~/ansible
+```
+
+---
+
+**Step 3: Create Inventory File**
+
+```bash id="a3"
+gedit hosts.ini
+```
+
+Add:
+
+```ini id="a4"
+[local]
+localhost ansible_connection=local
+```
+
+---
+
+**Step 4: Create Playbook**
+
+```bash id="a5"
+gedit local_playbook.yml
+```
+
+Add:
+
+```yaml id="a6"
+---
+- name: Install Nginx on Local Machine
+  hosts: local
+  become: yes
+
+  tasks:
+    - name: Ensure Nginx is installed
+      apt:
+        name: nginx
+        state: present
+```
+
+---
+
+**Step 5: Configure Passwordless Sudo**
+
+```bash id="a7"
+sudo visudo
+```
+
+Add line:
+
+```text id="a8"
+ubuntu ALL=(ALL) NOPASSWD:ALL
+```
+
+---
+
+**Step 6: Run Playbook**
+
+```bash id="a9"
+ansible-playbook -i hosts.ini local_playbook.yml
+```
+
+---
+
+**Step 7: Verify Installation**
+
+```bash id="a10"
+systemctl status nginx
+```
+
+Open browser:
+
+```text id="a11"
+http://localhost
+```
+
+---
+
+**EXPECTED OUTPUT**
+
+```text id="a12"
+PLAY [Install Nginx on Local Machine]
+TASK [Ensure Nginx is installed]
+changed: [localhost]
+
+PLAY RECAP
+localhost : ok=1 changed=1 unreachable=0 failed=0
+```
+
+---
+
+**PROJECT STRUCTURE**
+
+```text id="a13"
+ansible/
+├── hosts.ini
+└── local_playbook.yml
+```
+
+---
+
+**CONCLUSION**
+Thus Ansible playbook is executed successfully and Nginx is installed.

@@ -1,0 +1,74 @@
+**AIM**
+To implement JUnit framework and test a Java program using assertion methods.
+
+---
+
+**THEORY**
+JUnit is a unit testing framework used to test Java applications. It allows developers to verify the correctness of code using test cases.
+
+Key Features of JUnit:
+
+* Uses annotations like `@Test` to define test methods
+* Supports automated testing
+* Provides assertion methods to validate results
+* Helps detect errors early in development
+
+JUnit Components:
+
+* **Test Case** → A method that tests a specific functionality
+* **Test Suite** → Collection of test cases
+* **Assertions** → Methods used to check expected vs actual results
+
+Common Assertion Methods:
+
+* `assertEquals(expected, actual)`
+* `assertTrue(condition)`
+* `assertFalse(condition)`
+
+JUnit Workflow:
+
+* Write a Java class
+* Write a test class
+* Use assertions to compare results
+* Run test → Pass/Fail output
+
+---
+
+**PROGRAM (Using assertEquals)**
+
+```java id="jn1eq"
+import static org.junit.Assert.*;
+import org.junit.Test;
+
+public class JunitExample {
+
+    @Test
+    public void testString() {
+        String str = "check the string";
+        assertEquals("check the string", str);
+    }
+}
+```
+
+---
+
+**COMMANDS / STEPS TO RUN IN ECLIPSE**
+
+1. Open Eclipse
+2. File → New → Java Project → Enter project name → Finish
+3. Right click project → New → Package → Enter package name
+4. Right click package → New → Class → Create class
+5. Right click project → New → JUnit Test Case
+6. Paste the program in test class
+7. Right click file → Run As → JUnit Test
+8. Observe output (Green = Pass, Red = Fail)
+
+---
+
+**OUTPUT**
+Test case executed successfully (Pass).
+
+---
+
+**CONCLUSION**
+Thus, JUnit is used to test Java programs and `assertEquals()` verifies expected and actual results.

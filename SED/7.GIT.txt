@@ -1,0 +1,141 @@
+**AIM**
+To perform version control operations using Git.
+
+---
+
+**THEORY**
+Git is a distributed version control system used to track changes in source code.
+It allows multiple developers to work on a project simultaneously.
+Git maintains history of changes and supports collaboration through remote repositories like GitHub.
+
+Git Architecture (3 Trees):
+
+* **Working Directory** → where files are created/modified
+* **Staging Area** → where files are prepared using `git add`
+* **Repository** → where files are permanently stored using `git commit`
+
+Basic Operations:
+
+* Initialize repository
+* Add files
+* Commit changes
+* Push to remote repository
+
+---
+
+**IMPLEMENTATION COMMANDS (SEQUENTIAL)**
+
+**Step 1: Install Git**
+
+```bash id="g1"
+sudo apt update
+sudo apt install git -y
+```
+
+**Step 2: Check Version**
+
+```bash id="g2"
+git --version
+```
+
+**Step 3: Configure Git**
+
+```bash id="g3"
+git config --global user.name "your_name"
+git config --global user.email "your_email"
+git config --list
+```
+
+---
+
+**Step 4: Create Repository**
+
+**Option A: Initialize New Repository**
+
+```bash id="g4"
+mkdir my_project
+cd my_project
+git init
+```
+
+**Option B: Clone Existing Repository**
+
+```bash id="g5"
+git clone https://github.com/username/repository.git
+cd repository
+```
+
+---
+
+**Step 5: Check Status**
+
+```bash id="g6"
+git status
+```
+
+---
+
+**Step 6: Add Files to Staging**
+
+```bash id="g7"
+git add .
+```
+
+OR
+
+```bash id="g8"
+git add filename.txt
+```
+
+---
+
+**Step 7: Commit Changes**
+
+```bash id="g9"
+git commit -m "initial commit"
+```
+
+---
+
+**Step 8: Connect to Remote Repository**
+
+```bash id="g10"
+git remote add origin https://github.com/username/repository.git
+git remote -v
+```
+
+---
+
+**Step 9: Push to GitHub**
+
+```bash id="g11"
+git branch -M main
+git push -u origin main
+```
+
+---
+
+**Step 10: Pull Latest Changes**
+
+```bash id="g12"
+git pull origin main
+```
+
+---
+
+**Step 11: View Logs**
+
+```bash id="g13"
+git log
+git log --oneline
+```
+
+---
+
+**OUTPUT**
+Repository created and files successfully pushed to GitHub.
+
+---
+
+**CONCLUSION**
+Thus Git is used to manage source code and track changes efficiently.

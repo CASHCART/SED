@@ -1,0 +1,146 @@
+**AIM**
+To design test cases for a banking application.
+
+---
+
+**THEORY**
+A test case is a set of conditions used to verify the functionality of an application.
+It includes input, execution steps, and expected output.
+Test cases help ensure software correctness and detect errors.
+
+Components of Test Case:
+
+* Test Case ID
+* Description
+* Pre-condition
+* Test Steps
+* Expected Result
+
+---
+
+**TEST CASES**
+
+**1. LOGIN MODULE**
+
+```text id="tc1"
+TC_LG_01 | Verify login with valid username and password | User account exists | 
+1. Open login page 
+2. Enter valid username 
+3. Enter valid password 
+4. Click login | 
+User should successfully log in
+```
+
+```text id="tc2"
+TC_LG_02 | Verify login with invalid password | User account exists | 
+Enter valid username and invalid password | 
+Error message "Incorrect Password"
+```
+
+```text id="tc3"
+TC_LG_03 | Verify login with blank fields | - | 
+Click login without entering data | 
+Validation message should appear
+```
+
+---
+
+**2. ACCOUNT BALANCE MODULE**
+
+```text id="tc4"
+TC_BL_01 | Check balance after login | User logged in | 
+Click "Check Balance" | 
+Current balance should display
+```
+
+```text id="tc5"
+TC_BL_02 | Unauthorized access to balance | User not logged in | 
+Open balance page directly | 
+Redirected to login page
+```
+
+---
+
+**3. MONEY TRANSFER MODULE**
+
+```text id="tc6"
+TC_TR_01 | Valid fund transfer | Sufficient balance | 
+Enter receiver account and amount | 
+Amount transferred successfully
+```
+
+```text id="tc7"
+TC_TR_02 | Transfer with insufficient balance | Low balance | 
+Enter amount greater than balance | 
+Error "Insufficient Balance"
+```
+
+```text id="tc8"
+TC_TR_03 | Transfer with invalid account | - | 
+Enter invalid account number | 
+Error "Invalid Account Number"
+```
+
+---
+
+**4. DEPOSIT MODULE**
+
+```text id="tc9"
+TC_DP_01 | Deposit valid amount | User logged in | 
+Enter amount and click deposit | 
+Amount added to balance
+```
+
+```text id="tc10"
+TC_DP_02 | Deposit negative amount | - | 
+Enter negative value | 
+Error "Invalid Amount"
+```
+
+---
+
+**5. WITHDRAW MODULE**
+
+```text id="tc11"
+TC_WD_01 | Withdraw valid amount | Sufficient balance | 
+Enter amount and withdraw | 
+Amount deducted
+```
+
+```text id="tc12"
+TC_WD_02 | Withdraw more than balance | Low balance | 
+Enter large amount | 
+Error "Insufficient Funds"
+```
+
+```text id="tc13"
+TC_WD_03 | Withdraw invalid amount | - | 
+Enter zero/negative amount | 
+Error "Invalid Amount"
+```
+
+---
+
+**6. TRANSACTION HISTORY**
+
+```text id="tc14"
+TC_TH_01 | View transaction history | User logged in | 
+Click transaction history | 
+List of transactions displayed
+```
+
+```text id="tc15"
+TC_TH_02 | No transaction history | New user | 
+Open transaction history | 
+Message "No transactions found"
+```
+
+---
+
+**OUTPUT**
+All test cases defined for banking application.
+
+---
+
+**CONCLUSION**
+Thus test cases are designed to validate different functionalities of the application.

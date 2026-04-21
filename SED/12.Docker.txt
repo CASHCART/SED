@@ -1,0 +1,155 @@
+**AIM**
+To install Docker, work with images, and create containers.
+
+---
+
+**THEORY**
+Docker is a containerization platform used to run applications in isolated environments called containers.
+It uses **images** to create containers and ensures consistency across systems.
+
+Key Concepts:
+
+* **Docker Engine** → runtime to run containers
+* **Image** → blueprint of application
+* **Container** → running instance of image
+* **Dockerfile** → used to build custom images
+
+---
+
+**IMPLEMENTATION COMMANDS (SEQUENTIAL)**
+
+**Step 1: Install Docker**
+
+```bash id="d1"
+sudo apt update
+sudo apt install docker.io -y
+```
+
+---
+
+**Step 2: Start and Enable Docker**
+
+```bash id="d2"
+sudo systemctl start docker
+sudo systemctl enable docker
+```
+
+---
+
+**Step 3: Verify Installation**
+
+```bash id="d3"
+docker --version
+sudo systemctl status docker
+```
+
+---
+
+**Step 4: Test Docker**
+
+```bash id="d4"
+sudo docker run hello-world
+```
+
+Expected Output:
+
+```text id="d5"
+Hello from Docker!
+```
+
+---
+
+**Step 5: Work with Images**
+
+```bash id="d6"
+sudo docker pull nginx
+sudo docker images
+sudo docker rmi nginx
+```
+
+---
+
+**Step 6: Create Container**
+
+```bash id="d7"
+docker run -d -p 8080:80 --name mynginx nginx
+```
+
+---
+
+**Step 7: Manage Containers**
+
+```bash id="d8"
+sudo docker ps
+sudo docker stop <container_id>
+sudo docker rm <container_id>
+```
+
+---
+
+**Step 8: Execute Inside Container**
+
+```bash id="d9"
+sudo docker exec -it <container_id> /bin/bash
+```
+
+---
+
+**Step 9: Jenkins using Docker**
+
+```bash id="d10"
+sudo docker pull jenkins/jenkins:lts
+sudo docker images
+```
+
+```bash id="d11"
+docker run -d --name jenkins -p 9090:8080 -p 50001:50000 jenkins/jenkins:lts
+```
+
+```bash id="d12"
+sudo docker ps
+```
+
+Open browser:
+
+```text id="d13"
+http://localhost:8080
+```
+
+```bash id="d14"
+sudo docker exec jenkins cat /var/jenkins_home/secrets/initialAdminPassword
+```
+
+```bash id="d15"
+sudo docker stop jenkins
+sudo docker rm jenkins
+```
+
+---
+
+**Step 10: Build Custom Image**
+
+```bash id="d16"
+nano Dockerfile
+```
+
+```dockerfile id="d17"
+FROM ubuntu:22.04
+RUN apt update
+CMD ["echo", "Hello Docker"]
+```
+
+```bash id="d18"
+docker build -t myimage .
+docker run myimage
+```
+
+---
+
+**OUTPUT**
+Docker installed successfully, containers created, and images managed.
+
+---
+
+**CONCLUSION**
+Thus Docker is used to create, run, and manage containers efficiently.
